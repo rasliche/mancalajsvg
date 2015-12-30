@@ -1,0 +1,15 @@
+body {
+  background-color: #cc9;
+}
+h1 {
+  text-align: center;
+}
+
+/* Draw the gameboard */
+.gameboard {
+  margin-left: 30px;
+    background-color: #fff;
+  width: 1200px;
+  height: 300px;
+  
+}

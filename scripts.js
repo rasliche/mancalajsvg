@@ -5,6 +5,8 @@ var MancalaGame = {
     'B' : [4,4,4,4,4,4,0]
   },
 
+  // Takes a side and a house index (0-5, 6 is the store)
+  // Moves the gems
   move: function(side, house) {
     var originHouse = house;
     var originSide = side;
@@ -26,7 +28,9 @@ var MancalaGame = {
     return true;
   },
 
-  checkForWin: function() {},
+  checkForWin: function() {
+
+  },
 
   moveIsValid: function() {}
 

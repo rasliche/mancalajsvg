@@ -28,6 +28,9 @@ var MancalaGame = {
     return true;
   },
 
+  // If a side is empty, the game is over and the sum of all gems on
+  // a players side and in their store should result in a winner.
+  // It is possible to tie.
   checkForWin: function() {
 
   },

@@ -2,11 +2,6 @@
 var MancalaGame = {
   turn: 'A',
 
-  endTurn: function() {
-    this.checkForWin(turn);
-    turn = (turn === 'A') ? 'B' : 'A';
-  },
-
   board: {
     'A' : [4,4,4,4,4,4,0],
     'B' : [4,4,4,4,4,4,0]
@@ -14,7 +9,7 @@ var MancalaGame = {
 
   // Takes a house index (0-5, 6 is the store)
   // Moves the gems
-  // ToDo:
+  // ToDo: (advanced rules)
   // This function should also check to see if the last house a gem was
   // put in was empty. If it is, the the player whose turn it is gets
   // all the gems in the opponent's house as well as the gem they just
@@ -62,6 +57,11 @@ var MancalaGame = {
       // Returns the key for the winning side
       return this.board[this.turn][6] > oppTotal ? this.turn : oppSide;
     } else { console.log("No winner, yet!")}
+  },
+
+  endTurn: function() {
+    this.checkForWin(turn);
+    turn = (turn === 'A') ? 'B' : 'A';
   },
 
   // Error checks that a house has gems and is not a store

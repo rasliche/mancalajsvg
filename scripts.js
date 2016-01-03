@@ -22,6 +22,8 @@ var MancalaGame = {
       console.log("Entered for loop");
       console.log(gems+" "+house);
       house += 1;
+
+      // Switch sides if gems left over after putting one in the store
       if (this.board[side][house] === undefined) {
         console.log("Switched sides");
         side = side === 'A' ? 'B' : 'A';
@@ -41,7 +43,7 @@ var MancalaGame = {
   // It is possible to tie. Run check after a turn before changing
   // sides
   checkForWin: function() {
-    var opp = this.turn === 'A' ? this.board['B'] : this.board['A'];
+    var oppSide = this.turn === 'A' ? 'B' : 'A';
     var total = 0;
     for (var h = 0; h<6; h++) {
       total+= this.board[this.turn][h];
@@ -49,12 +51,12 @@ var MancalaGame = {
     if (total === 0) {
       // If 'side' is empty, then we know their store (side[6]) is
       // their total. opp.reduce() to get opp score, then compare
-      var oppTotal = opp.reduce(function(acc, c) {
+      var oppTotal = this.board[oppSide].reduce(function(acc, c) {
         return acc + c;
       });
-      console.log(oppTotal);
-      this.board[this.turn][6] > oppTotal ? console.log(this.board[this.turn]) : console.log(opp);
-    } else { console.log("no winner")}
+      // Returns the key for the winning side
+      return this.board[this.turn][6] > oppTotal ? this.turn : oppSide;
+    } else { console.log("No winner, yet!")}
   },
 
   moveIsValid: function() {}

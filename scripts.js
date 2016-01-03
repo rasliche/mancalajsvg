@@ -14,6 +14,11 @@ var MancalaGame = {
 
   // Takes a house index (0-5, 6 is the store)
   // Moves the gems
+  // ToDo:
+  // This function should also check to see if the last house a gem was
+  // put in was empty. If it is, the the player whose turn it is gets
+  // all the gems in the opponent's house as well as the gem they just
+  // dropped. ( house index sums = 5. ie, house 0 = oppHouse 5)
   move: function(house) {
     var originHouse = house;
     var originSide = this.turn;
@@ -59,6 +64,13 @@ var MancalaGame = {
     } else { console.log("No winner, yet!")}
   },
 
-  moveIsValid: function() {}
+  // Error checks that a house has gems and is not a store
+  moveIsValid: function(house) {
+    if (-1 < house && house < 6 && this.board[this.turn][house] > 0){
+      return true;
+    } else {
+      return false;
+    }
+  }
 
 };
